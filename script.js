@@ -3,7 +3,8 @@ const rainContainer = document.querySelector('.rain-container');
 
 let clickCount = 0;
 let clickTimer = null;
-let weatherType = 'rain'; // rain, snow, thunder
+let weatherType = 'rain'; // rain, sunshine, rainbow
+let rainbowShown = false;
 
 coolButton.addEventListener('click', () => {
     clickCount++;
@@ -13,18 +14,21 @@ coolButton.addEventListener('click', () => {
     clickTimer = setTimeout(() => {
         clickCount = 0;
         weatherType = 'rain';
+        rainbowShown = false;
         coolButton.textContent = 'Cool down';
     }, 2000); // Reset after 2 seconds of no clicks
     
     // Update weather type based on click count
     if (clickCount >= 20) {
-        weatherType = 'thunder';
-        coolButton.textContent = '⚡ Thunderstorm!';
+        weatherType = 'rainbow';
+        coolButton.textContent = '🌈 Rainbow!';
     } else if (clickCount >= 10) {
-        weatherType = 'snow';
-        coolButton.textContent = '❄️ Snowflakes!';
+        weatherType = 'sunshine';
+        rainbowShown = false;
+        coolButton.textContent = '☀️ Sunshine!';
     } else {
         weatherType = 'rain';
+        rainbowShown = false;
         coolButton.textContent = 'Cool down';
     }
     
@@ -33,15 +37,22 @@ coolButton.addEventListener('click', () => {
 
 function makeItRain() {
     const duration = 3000; // 3 seconds
-    const dropCount = weatherType === 'thunder' ? 80 : 50;
+    
+    if (weatherType === 'rainbow') {
+        if (!rainbowShown) {
+            createRainbow();
+            rainbowShown = true;
+        }
+        return;
+    }
+    
+    const dropCount = 50;
     
     // Create precipitation
     for (let i = 0; i < dropCount; i++) {
         setTimeout(() => {
-            if (weatherType === 'snow') {
-                createSnowflake();
-            } else if (weatherType === 'thunder') {
-                createThunderstorm();
+            if (weatherType === 'sunshine') {
+                createSunshine();
             } else {
                 createRaindrop();
             }
@@ -69,55 +80,68 @@ function createRaindrop() {
     }, fallDuration * 1000);
 }
 
-function createSnowflake() {
-    const snowflake = document.createElement('div');
-    snowflake.className = 'snowflake';
-    snowflake.textContent = '❄';
+function createSunshine() {
+    const sunbeam = document.createElement('div');
+    sunbeam.className = 'sunbeam';
     
     // Random horizontal position
     const leftPosition = Math.random() * 100;
-    snowflake.style.left = leftPosition + '%';
+    sunbeam.style.left = leftPosition + '%';
     
     // Random animation duration for variety
-    const fallDuration = 2 + Math.random() * 2;
-    snowflake.style.animationDuration = fallDuration + 's';
+    const fallDuration = 1.5 + Math.random() * 1.5;
+    sunbeam.style.animationDuration = fallDuration + 's';
     
-    // Random size
-    const size = 10 + Math.random() * 10;
-    snowflake.style.fontSize = size + 'px';
+    // Random width and rotation for variety
+    const width = 3 + Math.random() * 5;
+    sunbeam.style.width = width + 'px';
     
-    rainContainer.appendChild(snowflake);
+    const rotation = -10 + Math.random() * 20;
+    sunbeam.style.transform = `rotate(${rotation}deg)`;
     
-    // Remove the snowflake after animation completes
+    rainContainer.appendChild(sunbeam);
+    
+    // Remove the sunbeam after animation completes
     setTimeout(() => {
-        snowflake.remove();
+        sunbeam.remove();
     }, fallDuration * 1000);
 }
 
-function createThunderstorm() {
-    const lightning = document.createElement('div');
-    lightning.className = 'lightning';
+function createRainbow() {
+    const rainbow = document.createElement('div');
+    rainbow.className = 'rainbow';
     
-    // Random horizontal position
-    const leftPosition = Math.random() * 100;
-    lightning.style.left = leftPosition + '%';
+    rainContainer.appendChild(rainbow);
     
-    // Random animation duration for variety
-    const fallDuration = 0.3 + Math.random() * 0.3;
-    lightning.style.animationDuration = fallDuration + 's';
-    
-    rainContainer.appendChild(lightning);
-    
-    // Add flash effect
-    if (Math.random() > 0.7) {
-        document.body.style.filter = 'brightness(1.5)';
+    // Create sparkles along the rainbow
+    for (let i = 0; i < 15; i++) {
         setTimeout(() => {
-            document.body.style.filter = 'brightness(1)';
-        }, 100);
+            createSparkle();
+        }, i * 150);
     }
     
-    // Remove the lightning after animation completes
+    // Remove the rainbow after animation completes
     setTimeout(() => {
-        lightning.remove();
-    }, fallDuration * 1000);
+        rainbow.remove();
+    }, 3500);
+}
+
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    
+    // Random position along the top arc of the rainbow inside the circle
+    const angle = Math.random() * 180; // 0 to 180 degrees
+    const radius = 120; // Distance from center, adjusted for inside circle
+    const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
+    const y = Math.sin((angle - 90) * Math.PI / 180) * radius + 30;
+    
+    sparkle.style.left = `calc(50% + ${x}px)`;
+    sparkle.style.top = `${y + 150}px`;
+    
+    rainContainer.appendChild(sparkle);
+    
+    setTimeout(() => {
+        sparkle.remove();
+    }, 1000);
 }
