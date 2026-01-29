@@ -6,11 +6,25 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1a4d2e 0%, #2d6a4f 33%, #52b788 66%, #74c69d 100%);
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(100, 200, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(150, 220, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(120, 210, 255, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #1e3a8a 0%, #3b82f6 33%, #60a5fa 66%, #93c5fd 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: lightPulse 8s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.15);
+    }
 }
 
 .container {
