@@ -7,10 +7,10 @@
 body {
     font-family: 'Arial', sans-serif;
     background: 
-        radial-gradient(ellipse at 20% 30%, rgba(100, 200, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(150, 220, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(120, 210, 255, 0.25) 0%, transparent 60%),
-        linear-gradient(135deg, #1e3a8a 0%, #3b82f6 33%, #60a5fa 66%, #93c5fd 100%);
+        radial-gradient(ellipse at 20% 30%, rgba(180, 140, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(200, 160, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(160, 120, 255, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #4c1d95 0%, #6d28d9 25%, #8b5cf6 50%, #a78bfa 75%, #c4b5fd 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
