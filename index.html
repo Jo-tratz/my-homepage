@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Homepage</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="weather-widget.css">
 </head>
 <body>
     <div class="container">
@@ -14,6 +15,30 @@
             <div class="rain-container"></div>
         </div>
         <button class="cool-button">Cool down</button>
+        <div class="weather-widget" id="weatherWidget">
+            <div class="weather-header">
+                <h2>Current Weather</h2>
+                <button id="refreshBtn">↻</button>
+                <button id="unitToggleBtn">°C/°F</button>
+            </div>
+            <div class="weather-content">
+                <div class="location" id="location">Loading...</div>
+                <div class="temperature" id="temperature">--°</div>
+                <div class="condition" id="condition">--</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Humidity:</span>
+                        <span id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Wind:</span>
+                        <span id="wind">-- km/h</span>
+                    </div>
+                </div>
+                <!-- Forecast removed -->
+            </div>
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </div>
     </div>
     <footer class="emoji-footer">
         <span>🌍</span>
@@ -28,5 +53,6 @@
         <span>✨</span>
     </footer>
     <script src="script.js"></script>
+        <script src="weather-widget.js"></script>
 </body>
 </html>
