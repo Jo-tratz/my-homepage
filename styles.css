@@ -6,16 +6,15 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: 
-        radial-gradient(ellipse at 20% 30%, rgba(180, 140, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(200, 160, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(160, 120, 255, 0.25) 0%, transparent 60%),
-        linear-gradient(135deg, #4c1d95 0%, #6d28d9 25%, #8b5cf6 50%, #a78bfa 75%, #c4b5fd 100%);
+    background-image: url('Firefly.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: lightPulse 8s ease-in-out infinite;
 }
 
 @keyframes lightPulse {
