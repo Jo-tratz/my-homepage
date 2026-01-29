@@ -12,9 +12,7 @@ class WeatherWidget {
     }
 
     bindEvents() {
-        document.getElementById('refreshBtn').addEventListener('click', () => {
-            this.loadWeather();
-        });
+        // No buttons to bind
     }
 
     async loadWeather() {
