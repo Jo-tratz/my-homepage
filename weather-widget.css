@@ -45,36 +45,37 @@
     letter-spacing: 0.5px;
 }
      text-align: left;
-#refreshBtn {
-    background: rgba(255,255,255,0.2);
-    border: none;
-    color: white;
-    padding: 8px;
-    border-radius: 50%;
-    cursor: pointer;
-     gap: 10px;
-    transition: background 0.3s ease;
-}
 
-#unitToggleBtn {
-    background: #e3e7ee;
-    border: none;
+.weather-widget .weather-header button,
+.weather-widget .weather-header #refreshBtn,
+.weather-widget .weather-header #unitToggleBtn {
+    background: rgba(255,255,255,0.22);
+    border: 1.5px solid rgba(255,255,255,0.35);
     color: #0984e3;
-    padding: 7px 14px;
-     text-align: left;
+    box-shadow: 0 2px 8px rgba(31,38,135,0.08);
+    padding: 8px 16px;
+    border-radius: 16px;
     cursor: pointer;
-    font-size: 14px;
-    margin-left: 4px;
-    transition: background 0.2s, color 0.2s;
+    font-size: 15px;
+    font-family: inherit;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    outline: none;
+    margin-right: 8px;
 }
-#unitToggleBtn:hover {
-    background: #d0e6fa;
+.weather-widget .weather-header button:last-child {
+    margin-right: 0;
+}
+.weather-widget .weather-header button:hover,
+.weather-widget .weather-header button:focus,
+.weather-widget .weather-header #refreshBtn:hover,
+.weather-widget .weather-header #unitToggleBtn:hover {
+    background: rgba(255,255,255,0.32);
     color: #222;
+    border: 1.5px solid #b3dafe;
+    box-shadow: 0 4px 16px rgba(31,38,135,0.13);
 }
-    #refreshBtn:hover {
-        background: #d0e6fa;
-        color: #222;
-    }
 
 .location, .condition {
     text-align: center;
